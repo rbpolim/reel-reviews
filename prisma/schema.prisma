@@ -8,8 +8,13 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model Example {
+model Movie {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+
+    title  String @db.VarChar(255)
+    userId String
+
+    @@index([userId])
+    @@map("movies")
 }
