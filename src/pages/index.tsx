@@ -1,18 +1,19 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+import Image from "next/image";
+import { SignInButton, useUser } from "@clerk/nextjs";
+
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-
 dayjs.extend(relativeTime);
 
+import { LoadingPage } from "~/components/Loading";
 import { api, type RouterOutputs } from "~/utils/api";
-import Image from "next/image";
 
 const CreateMovieWizard = () => {
   const { user } = useUser()
 
-  if (!user) return null
+  if (!user || !user.username) return null
 
   return (
     <div className="flex w-full gap-4">
@@ -38,7 +39,7 @@ const PostView = (props: PostViewProps) => {
   const { movie, user } = props
 
   return (
-    <div key={movie.id} className="p-6 flex items-center gap-4 border-b">
+    <div key={movie.id} className="p-6 flex items-center gap-4 border-b w-full">
       <Image
         src={user.avatar}
         alt={`${user.username} profile image}`}
@@ -52,21 +53,35 @@ const PostView = (props: PostViewProps) => {
           <span>{`@${user.username}`}</span>
           <span className="">{` · ${dayjs(movie.createdAt).fromNow()}`}</span>
         </div>
-
-
         <h2 className="text-lg">{movie.title}</h2>
       </div>
     </div>
   )
 }
 
-const Home: NextPage = () => {
-  const { isSignedIn } = useUser();
-
+const Feed = () => {
   const { data, isLoading, isError, } = api.movies.getAll.useQuery();
 
-  if (isLoading) return <div>Loading...</div>
-  if (isError) return <h1>Something went wrong</h1>
+  if (isLoading) return <LoadingPage />
+  if (isError) return <div>Something went wrong</div>
+
+  return (
+    <div className="flex fle-col">
+      {data?.map(({ user, movie }) => (
+        <PostView key={movie.id} user={user} movie={movie} />
+      ))}
+    </div>
+  )
+}
+
+const Home: NextPage = () => {
+  const { isSignedIn, isLoaded } = useUser();
+
+  // Start fetching data as soon as the page loads
+  api.movies.getAll.useQuery();
+
+  // Show a loading page while we wait for the user to be loaded
+  if (!isLoaded) return <div />
 
   return (
     <>
@@ -79,23 +94,14 @@ const Home: NextPage = () => {
         <div className="mx-auto w-full max-w-2xl border-x ">
           <div className="flex items-center justify-between border-b p-8">
             {!isSignedIn && (
-              <div >
-                <SignInButton mode="modal">SIGN IN</SignInButton>
-              </div>
+              <SignInButton mode="modal">SIGN IN</SignInButton>
             )}
             {!!isSignedIn && (
-              <>
-                <CreateMovieWizard />
-                <SignOutButton>
-                  SIGN OUT
-                </SignOutButton>
-              </>
+              <CreateMovieWizard />
             )}
           </div>
 
-          {data?.map(({ user, movie }) => (
-            <PostView key={movie.id} user={user} movie={movie} />
-          ))}
+          <Feed />
         </div>
       </main >
     </>
