@@ -1,6 +1,5 @@
 ![MacBook Pro 14_ - 3](https://user-images.githubusercontent.com/66570560/229381059-a3b21029-883f-4f4b-9e33-9e52858e75cc.png)
 
-
 ## Reel Reviews 🎥
 
 Reel Reviews is a movie review project that allows registered users to create posts about their favorite films. To create a post, users must be logged in to the platform.
@@ -9,14 +8,13 @@ Reel Reviews is a movie review project that allows registered users to create po
 
 You can view a live demo of the project here:
 
-https://cine-five-nu.vercel.app/
-
+<https://cine-five-nu.vercel.app/>
 
 ## Technologies
 
 This project was built using the following technologies:
 
-- [tRPC](https://trpc.io): TRPC is a lightweight and flexible RPC (Remote Procedure Call) framework for Node.js. 
+- [tRPC](https://trpc.io): TRPC is a lightweight and flexible RPC (Remote Procedure Call) framework for Node.js.
 
 - [Next.js](https://nextjs.org): NextJS is a React-based framework for building web applications with server-side rendering and static site generation capabilities.
 
@@ -28,13 +26,13 @@ This project was built using the following technologies:
 
 To run this project, you will need to add the following environment variables to your .env.local file
 
-- PRISMA DATABASE
+- PRISMA DATABASE <br>
 `DATABASE_URL=`
 
-- CLERK AUTHENTICATION
-`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=`
+- CLERK AUTHENTICATION <br>
+`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=` <br>
 `CLERK_SECRET_KEY=`
 
-- UNSPLASH
-`UPSTASH_REDIS_REST_URL=`
+- UNSPLASH <br>
+`UPSTASH_REDIS_REST_URL=` <br>
 `UPSTASH_REDIS_REST_TOKEN=`
