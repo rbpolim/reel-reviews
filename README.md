@@ -1,7 +1,16 @@
+![MacBook Pro 14_ - 3](https://user-images.githubusercontent.com/66570560/229381059-a3b21029-883f-4f4b-9e33-9e52858e75cc.png)
+
 
 ## Reel Reviews 🎥
 
 Reel Reviews is a movie review project that allows registered users to create posts about their favorite films. To create a post, users must be logged in to the platform.
+
+## Demo
+
+You can view a live demo of the project here:
+
+https://cine-five-nu.vercel.app/
+
 
 ## Technologies
 
@@ -19,15 +28,13 @@ This project was built using the following technologies:
 
 To run this project, you will need to add the following environment variables to your .env.local file
 
-`NEXT_PUBLIC_API_URL`
+- PRISMA DATABASE
+`DATABASE_URL=`
 
-```PRISMA DATABASE```
-DATABASE_URL=
+- CLERK AUTHENTICATION
+`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=`
+`CLERK_SECRET_KEY=`
 
-```CLERK AUTHENTICATION```
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-
-```UNSPLASH```
-UPSTASH_REDIS_REST_URL=
-UPSTASH_REDIS_REST_TOKEN=
+- UNSPLASH
+`UPSTASH_REDIS_REST_URL=`
+`UPSTASH_REDIS_REST_TOKEN=`
