@@ -9,11 +9,23 @@ dayjs.extend(relativeTime);
 
 import { LoadingPage } from "~/components/Loading";
 import { api, type RouterOutputs } from "~/utils/api";
+import { useState } from "react";
 
 const CreateMovieWizard = () => {
+  const [titleMovie, setTitleMovie] = useState('')
+
   const { user } = useUser()
 
-  if (!user || !user.username) return null
+  const ctx = api.useContext()
+
+  const { mutate, isLoading: isPosting } = api.movies.create.useMutation({
+    onSuccess: () => {
+      setTitleMovie('')
+      void ctx.movies.getAll.invalidate()
+    }
+  })
+
+  if (!user) return null
 
   return (
     <div className="flex w-full gap-4">
@@ -28,13 +40,22 @@ const CreateMovieWizard = () => {
       <input
         placeholder="Type some movie name..."
         className="bg-transparent text-xl grow outline-none"
+        value={titleMovie}
+        onChange={(e) => setTitleMovie(e.target.value)}
       />
+
+      <button
+        type="submit"
+        disabled={isPosting}
+        onClick={() => mutate({ title: titleMovie })}
+      >
+        Post
+      </button>
     </div>
   )
 }
 
 type PostViewProps = RouterOutputs["movies"]["getAll"][number]
-
 const PostView = (props: PostViewProps) => {
   const { movie, user } = props
 
@@ -48,26 +69,26 @@ const PostView = (props: PostViewProps) => {
         height={64}
       />
 
-      <div className="flex flex-col text-slate-300">
-        <div>
-          <span>{`@${user.username}`}</span>
+      <div className="flex flex-col">
+        <div className="text-slate-300">
+          <span >{`@${user.username}`}</span>
           <span className="">{` · ${dayjs(movie.createdAt).fromNow()}`}</span>
         </div>
-        <h2 className="text-lg">{movie.title}</h2>
+        <h2 className="text-lg mt-2">{movie.title}</h2>
       </div>
     </div>
   )
 }
 
 const Feed = () => {
-  const { data, isLoading, isError, } = api.movies.getAll.useQuery();
+  const { data, isLoading } = api.movies.getAll.useQuery();
 
   if (isLoading) return <LoadingPage />
-  if (isError) return <div>Something went wrong</div>
+  if (!data) return <div>Something went wrong</div>
 
   return (
-    <div className="flex fle-col">
-      {data?.map(({ user, movie }) => (
+    <div className="flex flex-col">
+      {data.map(({ user, movie }) => (
         <PostView key={movie.id} user={user} movie={movie} />
       ))}
     </div>
