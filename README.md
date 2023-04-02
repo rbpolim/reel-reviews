@@ -1,28 +1,29 @@
-# Create T3 App
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+### Reel Reviews 🎥
 
-## What's next? How do I make an app with this?
+Reel Reviews is a movie review project that allows registered users to create posts about their favorite films. To create a post, users must be logged in to the platform.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+### Technologies
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+This project was built using the following technologies:
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- [tRPC](https://trpc.io): TRPC is a lightweight and flexible RPC (Remote Procedure Call) framework for Node.js. It is used in this project to handle client-server communication.
 
-## Learn More
+[Next.js](https://nextjs.org): NextJS is a React-based framework for building web applications with server-side rendering and static site generation capabilities.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- [Prisma](https://prisma.io): Prisma is a modern ORM (Object-Relational Mapping) used to interact with databases. It is used in this project to connect to the database and manage database queries.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- Zod: Zod is a lightweight TypeScript schema validation library. It is used in this project to validate user input and ensure data consistency.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- [Tailwind CSS](https://tailwindcss.com): Tailwindcss is a highly customizable CSS framework that provides a set of utility classes to style HTML elements. It is used in this project to style the UI.
 
-## How do I deploy this?
+### Installation
+To install and run this project on your local machine, follow these steps:
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```Clone the repository: git clone <https://github.com/your-username/reel-reviews.git>
+
+Install dependencies: npm install
+
+Create a .env file and add the required environment variables
+
+Run the project: npm start```
