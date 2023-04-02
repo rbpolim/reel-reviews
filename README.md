@@ -1,29 +1,33 @@
 
-### Reel Reviews 🎥
+## Reel Reviews 🎥
 
 Reel Reviews is a movie review project that allows registered users to create posts about their favorite films. To create a post, users must be logged in to the platform.
 
-### Technologies
+## Technologies
 
 This project was built using the following technologies:
 
-- [tRPC](https://trpc.io): TRPC is a lightweight and flexible RPC (Remote Procedure Call) framework for Node.js. It is used in this project to handle client-server communication.
+- [tRPC](https://trpc.io): TRPC is a lightweight and flexible RPC (Remote Procedure Call) framework for Node.js. 
 
-[Next.js](https://nextjs.org): NextJS is a React-based framework for building web applications with server-side rendering and static site generation capabilities.
+- [Next.js](https://nextjs.org): NextJS is a React-based framework for building web applications with server-side rendering and static site generation capabilities.
 
-- [Prisma](https://prisma.io): Prisma is a modern ORM (Object-Relational Mapping) used to interact with databases. It is used in this project to connect to the database and manage database queries.
-
-- Zod: Zod is a lightweight TypeScript schema validation library. It is used in this project to validate user input and ensure data consistency.
+- [Prisma](https://prisma.io): Prisma is a modern ORM (Object-Relational Mapping) used to interact with databases.
 
 - [Tailwind CSS](https://tailwindcss.com): Tailwindcss is a highly customizable CSS framework that provides a set of utility classes to style HTML elements. It is used in this project to style the UI.
 
-### Installation
-To install and run this project on your local machine, follow these steps:
+## Environment Variables
 
-```Clone the repository: git clone <https://github.com/your-username/reel-reviews.git>
+To run this project, you will need to add the following environment variables to your .env.local file
 
-Install dependencies: npm install
+`NEXT_PUBLIC_API_URL`
 
-Create a .env file and add the required environment variables
+```PRISMA DATABASE```
+DATABASE_URL=
 
-Run the project: npm start```
+```CLERK AUTHENTICATION```
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+
+```UNSPLASH```
+UPSTASH_REDIS_REST_URL=
+UPSTASH_REDIS_REST_TOKEN=
