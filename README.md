@@ -4,12 +4,6 @@
 
 Reel Reviews is a movie review project that allows registered users to create posts about their favorite films. To create a post, users must be logged in to the platform.
 
-## Demo
-
-You can view a live demo of the project here:
-
-<https://cine-five-nu.vercel.app/>
-
 ## Technologies
 
 This project was built using the following technologies:
